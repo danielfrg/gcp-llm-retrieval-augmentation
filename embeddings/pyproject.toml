@@ -1,0 +1,28 @@
+[project]
+name = "langchain-llmops"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "Daniel Rodriguez", email = "daniel@danielfrg.com" }]
+dependencies = [
+    "jupyterlab>=4.0.3",
+    "tensorflow>=2.13.0",
+    "google-cloud-aiplatform>=1.28.1",
+    "tensorflow-hub>=0.14.0",
+    "tensorflow-text>=2.12.1",
+    "datasets>=2.14.0",
+    "langchain>=0.0.27",
+    "ipywidgets>=8.0.7",
+]
+# readme = "README.md"
+requires-python = ">= 3.9"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
