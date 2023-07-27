@@ -8,7 +8,7 @@ upload them to a GCP bucket and update the index.
 There are multiple ways to create the embeddings, in this example we use
 [LangChain](https://langchain.com) and the Tensorflow Hub Model [Universal Sentence Encoder v3](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3).
 
-The Python code can be found in [the embeddings notebook](/danielfrg/gcp-langchain-retrieval-augmentation/blob/main/embeddings/embeddings.ipynb)
+The Python code can be found in [the embeddings notebook](/embeddings/embeddings.ipynb)
 running this notebook will generate a `embeddings/data/embeddings.json` file.
 
 ## Upload embeddings to GCP bucket
@@ -28,4 +28,4 @@ gcloud ai indexes update <index_id> \
   --region=<region>
 ```
 
-You can get `<index_id>` from the Teraform output of the [previous step](/danielfrg/gcp-langchain-retrieval-augmentation/blob/main/docs/1_matching_engine.md).
+You can get `<index_id>` from the Teraform output of the [previous step](/docs/1_matching_engine.md).
