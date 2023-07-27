@@ -13,5 +13,5 @@ Services used:
 
 ## Docs
 
-1. [Matching Engine Setup](/danielfrg/gcp-langchain-retrieval-augmentation/blob/main/docs/1_matching_engine.md)
-2. [Create embeddings](/danielfrg/gcp-langchain-retrieval-augmentation/blob/main/docs/2_create_embeddings.md)
+1. [Matching Engine Setup](/docs/1_matching_engine.md)
+2. [Create embeddings](/docs/2_create_embeddings.md)
