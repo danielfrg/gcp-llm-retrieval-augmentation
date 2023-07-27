@@ -27,6 +27,8 @@ cd terraform
 terraform apply
 ```
 
+Note: This step might take up to an hour to complete.
+
 The terraform configuration will output the following variables that will be
 used in the next steps:
 
