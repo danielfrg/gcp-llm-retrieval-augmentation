@@ -29,3 +29,8 @@ gcloud ai indexes update <index_id> \
 ```
 
 You can get `<index_id>` from the Teraform output of the [previous step](/docs/1_matching_engine.md).
+
+## Query the embeddings
+
+Now that the index has been updated we can query for a similarity search.
+[See notebook](/embeddings/similarity_search.ipynb).

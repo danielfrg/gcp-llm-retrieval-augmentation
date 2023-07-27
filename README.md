@@ -1,10 +1,15 @@
-# LangChain retrieval augmentation in Google Cloud
+# LLM retrieval augmentation in Google Cloud
 
 Services used:
 
 - VertexAI Matching Engine Index and Index Endpoint
-- Firebase
 - Firestore
+- Firebase
+
+Frameworks:
+
+- Tensorflow Hub
+- LangChain
 
 ## Prerequisites
 
