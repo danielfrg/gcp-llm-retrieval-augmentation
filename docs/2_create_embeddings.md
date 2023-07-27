@@ -13,7 +13,7 @@ running this notebook will generate a `embeddings/data/embeddings.json` file.
 
 ## Upload embeddings to GCP bucket
 
-```
+```plain
 gsutil cp embeddings/data/embeddings.json gs://<BUCKET_NAME>/contents/embeddings.json
 ```
 
@@ -22,7 +22,7 @@ gsutil cp embeddings/data/embeddings.json gs://<BUCKET_NAME>/contents/embeddings
 First modify the `embeddings/metadata.json` file to point to the GCP bucket
 where the embeddings were uploaded and then run the update command:
 
-```
+```plain
 gcloud ai indexes update <index_id> \
   --metadata-file=medatada.json \
   --region=<region>
