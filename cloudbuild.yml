@@ -5,7 +5,7 @@ steps:
       [
         "build",
         "-t",
-        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api",
+        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api/api",
         "api",
       ]
 
@@ -14,7 +14,7 @@ steps:
     args:
       [
         "push",
-        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api",
+        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api/api",
       ]
 
   # Deploy container image to Cloud Run
