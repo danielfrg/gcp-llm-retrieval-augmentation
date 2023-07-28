@@ -5,13 +5,17 @@ steps:
       [
         "build",
         "-t",
-        "gcr.io/langchain-llmops/retrieval-augmentation-api",
+        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api",
         "api",
       ]
 
   # Push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/langchain-llmops/retrieval-augmentation-api"]
+    args:
+      [
+        "push",
+        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api",
+      ]
 
   # Deploy container image to Cloud Run
   # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
