@@ -18,17 +18,17 @@ steps:
       ]
 
   # Deploy container image to Cloud Run
-  # - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-  #   entrypoint: gcloud
-  #   args:
-  #     [
-  #       "run",
-  #       "deploy",
-  #       "SERVICE-NAME",
-  #       "--image",
-  #       "gcr.io/langchain-llmops/retrieval-augmentation-api",
-  #       "--region",
-  #       "REGION",
-  #     ]
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "run",
+        "deploy",
+        "retreival-augmentation-api",
+        "--image",
+        "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api/api",
+        "--region",
+        "us-central1",
+      ]
 images:
-  - gcr.io/langchain-llmops/retrieval-augmentation-api
+  - us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api/api

@@ -24,3 +24,23 @@ resource "google_cloudbuild_trigger" "include-build-logs-trigger" {
 
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
 }
+
+# Create the Cloud Run Service
+
+resource "google_cloud_run_service" "api" {
+  name     = "retreival-augmentation-api"
+  location = var.region
+
+  template {
+    spec {
+      containers {
+        image = "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api/api"
+      }
+    }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
+}
