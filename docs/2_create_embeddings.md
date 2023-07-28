@@ -34,3 +34,8 @@ You can get `<index_id>` from the Teraform output of the [previous step](/docs/1
 
 Now that the index has been updated we can query for a similarity search.
 [See notebook](/embeddings/similarity_search.ipynb).
+
+## Next step
+
+In the next step we will deploy a Cloud Run service that will use the index to
+perform similarity searches and expose it as an API.

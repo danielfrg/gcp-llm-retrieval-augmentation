@@ -1,0 +1,23 @@
+[project]
+name = "api"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "Daniel Rodriguez", email = "daniel@danielfrg.com" }]
+dependencies = [
+    "fastapi>=0.100.1",
+    "google-cloud-aiplatform>=1.28.1",
+    "uvicorn[standard]>=0.23.1",
+]
+# readme = "README.md"
+requires-python = ">= 3.9"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev_dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true

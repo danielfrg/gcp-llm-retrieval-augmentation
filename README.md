@@ -18,5 +18,6 @@ Frameworks:
 
 ## Docs
 
-1. [Matching Engine Setup](/docs/1_matching_engine.md)
+1. [Matching Engine Index Setup](/docs/1_matching_engine.md)
 2. [Create embeddings](/docs/2_create_embeddings.md)
+3. [Cloud Run](/docs/3_firebase.md)
