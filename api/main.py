@@ -8,16 +8,17 @@ model_url = "https://tfhub.dev/google/universal-sentence-encoder-multilingual/3"
 embeddings = TensorflowHubEmbeddings(model_url=model_url)
 
 my_index_endpoint = aiplatform.MatchingEngineIndexEndpoint(
-    index_endpoint_name=''
+    index_endpoint_name='8727756175518466048'
 )
 
 @app.post("/")
 async def root(query: str, n: int = 10):
     vector = embeddings.embed_documents([query])
 
-    my_index_endpoint.find_neighbors(
+    neighbors = my_index_endpoint.find_neighbors(
         deployed_index_id="mydeployedindex123",
         queries=vector,
         num_neighbors=n
     )
-    return {"message": "Hello World"}
+
+    return [[neighbor.id, neighbor.distance] for neighbor in neighbors[0]]
