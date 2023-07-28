@@ -12,7 +12,7 @@ resource "google_artifact_registry_repository" "api" {
 resource "google_cloudbuild_trigger" "include-build-logs-trigger" {
   location = var.region
   name     = "retrieve-augment-api"
-  filename = "cloudbuild.yaml"
+  filename = "cloudbuild.yml"
 
   github {
     owner = "danielfrg"
