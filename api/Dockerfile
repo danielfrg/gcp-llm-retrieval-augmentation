@@ -9,4 +9,7 @@ COPY . ./
 # Install production dependencies.
 RUN pip install -r requirements.lock
 
+# Download model
+RUN python setup.py
+
 CMD uvicorn --host 0.0.0.0 --port $PORT main:app
