@@ -9,6 +9,8 @@ We use Cloud Run to host our API.
 - We use a custom Dockerfile to build the API image including it's depencencies
   and pre-trained models needed to generate the embeddings
 
+TODO: Example API call and respose. Point to Notebook.
+
 We use Cloud Build to build the deploy the API to Cloud Run.
 Look at the [`cloudbuild.yml`](/cloudbuild.yml) file for more details.
 
