@@ -29,6 +29,7 @@ steps:
         "us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api",
         "--region",
         "us-central1",
+        "--cors-allowed-origins",
       ]
 images:
   - us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api
