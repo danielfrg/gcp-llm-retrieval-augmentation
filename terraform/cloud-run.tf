@@ -9,23 +9,27 @@ resource "google_artifact_registry_repository" "api" {
 
 # Create a Cloud Build Trigger pointing to the GitHub Repo
 
-resource "google_service_account" "cloudbuild" {
-  account_id   = "retreival-aug-cloudbuild"
-  display_name = "Service Account for the Retrieval Augmentation API Cloud Build"
+# resource "google_service_account" "cloudbuild" {
+#   account_id   = "retreival-aug-cloudbuild"
+#   display_name = "Service Account for the Retrieval Augmentation API Cloud Build"
+# }
+
+resource "google_project_service_identity" "cloud_build_sa" {
+  provider = google-beta
+  project  = var.project_id
+  service  = "cloudbuild.googleapis.com"
 }
 
 resource "google_project_iam_member" "cloudbuild_cloudrun_binding" {
   project = var.project_id
   role    = "roles/run.admin"
-  member  = "serviceAccount:${google_service_account.cloudbuild.email}"
+  member  = "serviceAccount:${google_project_service_identity.cloud_build_sa.email}"
 }
 
-resource "google_cloudbuild_trigger" "githun_repo" {
+resource "google_cloudbuild_trigger" "github_repo" {
   location = var.region
   name     = "retrieve-augment-api"
   filename = "cloudbuild.yml"
-
-  service_account = google_service_account.cloudbuild.id
 
   github {
     owner = "danielfrg"
