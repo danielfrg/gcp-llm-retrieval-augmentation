@@ -14,6 +14,24 @@ We use Cloud Run to host our API.
 
 TODO: Example API call and respose. Point to Notebook.
 
+```
+[
+  [
+    "573273bfe17f3d1400422993",
+    0.6401801109313965
+  ],
+  [
+    "56fae8528f12f3190063029f",
+    0.5958483815193176
+  ],
+  [
+    "572f39d804bcaa1900d7679d",
+    0.5644943118095398
+  ],
+  ...
+]
+```
+
 We use Cloud Build to build the deploy the API to Cloud Run.
 Look at the [`cloudbuild.yml`](/cloudbuild.yml) file for more details.
 
