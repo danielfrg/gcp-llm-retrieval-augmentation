@@ -14,7 +14,7 @@ running this notebook will generate a `embeddings/data/embeddings.json` file.
 ## Upload embeddings to GCP bucket
 
 ```plain
-gsutil cp embeddings/data/embeddings.json gs://<BUCKET_NAME>/contents/embeddings.json
+gsutil cp embeddings/data/embeddings.json gs://retreival-augmentation-example-4000/contents/embeddings.json
 ```
 
 ## Trigger batch index update
@@ -23,12 +23,16 @@ First modify the `embeddings/metadata.json` file to point to the GCP bucket
 where the embeddings were uploaded and then run the update command:
 
 ```plain
-gcloud ai indexes update <index_id> \
-  --metadata-file=medatada.json \
+gcloud ai indexes update <tf_index_id> \
+  --metadata-file=embeddings/metadata.json \
   --region=<region>
 ```
 
-You can get `<index_id>` from the Teraform output of the [previous step](/docs/1_matching_engine.md).
+You can get `<tf_index_id>` from the Teraform output of the [previous step](/docs/1_matching_engine.md).
+
+The previous command will trigger a batch update of the index, this can take
+while to complete. The previous command will output a command to check the
+operation status.
 
 ## Query the embeddings
 

@@ -39,14 +39,25 @@ index_endpoint_id = "XXXX"
 index_id = "YYYY"
 ```
 
+Note that at any point you can get the values of these variables by running:
+
+```plain
+terraform output
+```
+
 Deploy the index to the index endpoint:
 
 ```plain
-gcloud ai index-endpoints deploy-index <index_endpoint_id> \
-  --deployed-index-id=<my-deployed-index-id> \
-  --display-name=<deployed-index> \
-  --index=<index_id>
+gcloud ai index-endpoints deploy-index <tf_index_endpoint_id> \
+  --index=<tf_index_id>
+  --deployed-index-id=<deployed-index-id> \
+  --display-name=<deployed-index-name> \
   --region us-central1
 ```
+
+- `<deployed-index-id>`: Any name that identifies the deployed index, should start with a letter and contain only letters
+- `<deployed-index-name>`: Display name for the deployed index
+- `tf_index_endpoint_id`: The value of the `index_endpoint_id` terraform output
+- `tf_index_id`: The value of the `index_id` terraform output
 
 For more info check the [official documentation](https://cloud.google.com/vertex-ai/docs/matching-engine/match-eng-setup/match-eng-setup).

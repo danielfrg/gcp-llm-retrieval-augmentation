@@ -23,7 +23,3 @@ variable "project_id" {
 variable "bucket_name" {
   type = string
 }
-
-# variable "project_num" {
-#   type = string
-# }

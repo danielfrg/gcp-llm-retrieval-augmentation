@@ -1,5 +1,5 @@
 [project]
-name = "langchain-llmops-firestore"
+name = "llmops-demos-frg-firestore"
 version = "0.1.0"
 description = "Add your description here"
 authors = [{ name = "Daniel Rodriguez", email = "daniel@danielfrg.com" }]

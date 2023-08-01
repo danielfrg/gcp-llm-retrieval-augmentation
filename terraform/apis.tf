@@ -5,6 +5,7 @@ variable "services" {
     "run.googleapis.com",
     "cloudbuild.googleapis.com",
     "artifactregistry.googleapis.com",
+    "secretmanager.googleapis.com"
   ]
 }
 

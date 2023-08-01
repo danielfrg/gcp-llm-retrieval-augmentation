@@ -46,7 +46,7 @@ resource "google_cloud_run_service" "api" {
     spec {
       service_account_name = google_service_account.cloudrun-api.email
       containers {
-        image = "us-central1-docker.pkg.dev/langchain-llmops/retrieval-augmentation-api/api"
+        image = "us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api"
         resources {
           limits = {
             memory = "2Gi"
