@@ -26,6 +26,12 @@ resource "google_project_iam_member" "cloudbuild_cloudrun_binding" {
   member  = "serviceAccount:${google_project_service_identity.cloud_build_sa.email}"
 }
 
+resource "google_project_iam_member" "cloudbuild_sauser_binding" {
+  project = var.project_id
+  role    = "roles/iam.serviceAccountUser"
+  member  = "serviceAccount:${google_project_service_identity.cloud_build_sa.email}"
+}
+
 resource "google_cloudbuild_trigger" "github_repo" {
   location = var.region
   name     = "retrieve-augment-api"
