@@ -38,31 +38,32 @@ resource "google_project_iam_member" "sa-ai-user-binding" {
   member  = "serviceAccount:${google_service_account.cloudrun-api.email}"
 }
 
-resource "google_cloud_run_service" "api" {
+resource "google_cloud_run_v2_service" "api" {
   name     = "retreival-augmentation-api"
   location = var.region
 
   template {
-    spec {
-      service_account_name = google_service_account.cloudrun-api.email
-      containers {
-        image = "us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api"
-        resources {
-          limits = {
-            memory = "2Gi"
-            cpu    = "1000m"
-          }
-          requests = {
-            memory = "2Gi"
-            cpu    = "1000m"
-          }
+    service_account = google_service_account.cloudrun-api.email
+
+    containers {
+      image = "us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api"
+      resources {
+        limits = {
+          memory = "3Gi"
+          cpu    = "2"
         }
       }
     }
   }
+}
 
-  traffic {
-    percent         = 100
-    latest_revision = true
-  }
+# Allow unauthenticated (allUsers) to invoke the Cloud Run Service
+
+resource "google_cloud_run_service_iam_binding" "unauthenticated" {
+  location = google_cloud_run_v2_service.api.location
+  service  = google_cloud_run_v2_service.api.name
+  role     = "roles/run.invoker"
+  members = [
+    "allUsers"
+  ]
 }
