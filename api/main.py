@@ -2,8 +2,20 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from google.cloud import aiplatform
 from langchain.embeddings import TensorflowHubEmbeddings
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 model_url = "https://tfhub.dev/google/universal-sentence-encoder-multilingual/3"
 embeddings = TensorflowHubEmbeddings(model_url=model_url)
