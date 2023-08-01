@@ -1,12 +1,17 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from google.cloud import aiplatform
 from langchain.embeddings import TensorflowHubEmbeddings
-from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
 
 app = FastAPI()
 
-origins = ["*"]
+origins = [
+    "*",
+    "http://127.0.0.1:5173",
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,14 +34,20 @@ async def root():
     content = 'Retreival Augmentation API.<br>See <a href="/docs">/docs</a>.'
     return HTMLResponse(content=content, status_code=200)
 
+class Query(BaseModel):
+    question: str
+    n: int = 10
+
+
+
 @app.post("/api")
-async def api(query: str, n: int = 10):
-    vector = embeddings.embed_documents([query])
+async def api(query: Query):
+    vector = embeddings.embed_documents([query.question])
 
     neighbors = my_index_endpoint.find_neighbors(
         deployed_index_id="retreivalaugindex",
         queries=vector,
-        num_neighbors=n
+        num_neighbors=query.n
     )
 
     return [[neighbor.id, neighbor.distance] for neighbor in neighbors[0]]
