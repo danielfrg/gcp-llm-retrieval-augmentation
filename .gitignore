@@ -16,3 +16,6 @@ wheels/
 .terraform
 terraform.tfvars
 terraform.tfstate*
+
+# Firebase
+.firebase

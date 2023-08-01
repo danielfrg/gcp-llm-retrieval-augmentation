@@ -1,47 +1,88 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "firebase/app";
+  import { doc, getDoc, getFirestore } from "firebase/firestore";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC2VAWEf4hv85QGAZiMDxwfvokp22X86_4",
+    authDomain: "llmops-demos-frg.firebaseapp.com",
+    projectId: "llmops-demos-frg",
+    storageBucket: "llmops-demos-frg.appspot.com",
+    messagingSenderId: "222282500808",
+    appId: "1:222282500808:web:824b7e9dd57b541dac33fd",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  let question: string = "What is the capital of France?";
+  let similarDocs: any[] = [];
+
+  async function onSubmit() {
+    const data = await fetch(
+      "https://retreival-augmentation-api-uowebtbapa-uc.a.run.app/api",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          question: question,
+          n: 5,
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
+
+    const docs = await data.json();
+
+    const newDocs: any[] = [];
+    for (const similar of docs) {
+      const docID = similar[0];
+      console.log(docID);
+      const docRef = doc(db, "questions", docID);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        console.log("Document data:", data);
+        newDocs.push(data);
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
+
+    similarDocs = newDocs;
+  }
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+<main class="flex flex-col gap-4 mx-auto text-center w-xl my-4">
+  <h1 class="text-4xl">Write a question</h1>
 
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+  <form on:submit|preventDefault={onSubmit} class="">
+    <input
+      bind:value={question}
+      type="text"
+      class="w-[500px] rounded text-gray-800"
+      placeholder="What is the capital of France?"
+    />
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Submit
+    </button>
+  </form>
 </main>
 
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+<section>
+  {#each similarDocs as { question }}
+    <li>
+      {question}
+    </li>
+  {/each}
+</section>
