@@ -2,8 +2,12 @@
 
 Firestore is the document database used to store all the questions with their respective IDs.
 
-This DB is used by the UI to retrieve the questions showed to the user.
+This DB is used by the web UI to retrieve the questions showed to the user.
 The API simply returns the IDs of the documents using Firestore we can retrieve the questions based on those IDs.
+
+## Setup
+
+Create the Firebase project using the UI and create the Firestore DB.
 
 ## Document structure
 
