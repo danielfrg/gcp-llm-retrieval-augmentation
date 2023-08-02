@@ -25,7 +25,7 @@
 
   async function onSubmit() {
     const data = await fetch(
-      "https://retreival-augmentation-api-uowebtbapa-uc.a.run.app/api",
+      "https://retrieval-augmentation-api-uowebtbapa-uc.a.run.app/api",
       {
         method: "POST",
         body: JSON.stringify({

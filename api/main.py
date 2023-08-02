@@ -50,7 +50,7 @@ async def api(query: Query_Neighbors):
     vector = embeddings.embed_documents([query.question])
 
     neighbors = my_index_endpoint.find_neighbors(
-        deployed_index_id="retreivalaugindex",
+        deployed_index_id="questions",
         queries=vector,
         num_neighbors=query.n
     )
@@ -61,7 +61,7 @@ async def api(query: Query_Neighbors):
 
 retriever = FirestoreRetriever(
     index_endpoint_name="1221803709063757824",
-    deployed_index_id="retreivalaugindex",
+    deployed_index_id="questions",
     collection="questions",
     embeddings = embeddings,
     top_k=5

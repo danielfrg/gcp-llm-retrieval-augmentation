@@ -13,7 +13,7 @@
       {
         "source": "/api",
         "run": {
-          "serviceId": "retreival-augmentation-api",
+          "serviceId": "retrieval-augmentation-api",
           "region": "us-central1"
         }
       }

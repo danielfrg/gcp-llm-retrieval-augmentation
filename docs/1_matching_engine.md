@@ -49,7 +49,7 @@ Deploy the index to the index endpoint:
 
 ```plain
 gcloud ai index-endpoints deploy-index <tf_index_endpoint_id> \
-  --index=<tf_index_id>
+  --index=<tf_index_id> \
   --deployed-index-id=<deployed-index-id> \
   --display-name=<deployed-index-name> \
   --region us-central1
