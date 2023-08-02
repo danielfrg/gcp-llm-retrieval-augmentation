@@ -9,11 +9,6 @@ resource "google_artifact_registry_repository" "api" {
 
 # Create a Cloud Build Trigger pointing to the GitHub Repo
 
-# resource "google_service_account" "cloudbuild" {
-#   account_id   = "retreival-aug-cloudbuild"
-#   display_name = "Service Account for the Retrieval Augmentation API Cloud Build"
-# }
-
 resource "google_project_service_identity" "cloud_build_sa" {
   provider = google-beta
   project  = var.project_id
@@ -51,7 +46,7 @@ resource "google_cloudbuild_trigger" "github_repo" {
 # Create the Cloud Run Service
 
 resource "google_service_account" "cloudrun_api" {
-  account_id   = "retreival-aug-cloudrun-api"
+  account_id   = "retrieval-aug-cloudrun-api"
   display_name = "Service Account for the Retrieval Augmentation Cloud Run API"
 }
 
@@ -62,7 +57,7 @@ resource "google_project_iam_member" "cloudrun_aiplatform_binding" {
 }
 
 resource "google_cloud_run_v2_service" "api" {
-  name     = "retreival-augmentation-api"
+  name     = "retrieval-augmentation-api"
   location = var.region
 
   template {

@@ -24,7 +24,7 @@ steps:
       [
         "run",
         "deploy",
-        "retreival-augmentation-api",
+        "retrieval-augmentation-api",
         "--image",
         "us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api",
         "--region",

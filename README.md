@@ -24,5 +24,5 @@ Frameworks:
 1. [Matching Engine Index Setup](/docs/1_matching_engine.md)
 1. [Create embeddings](/docs/2_create_embeddings.md)
 1. [Firestore](/docs/3_firestore.md)
-1. [LangChain Retreiver and Agent](/docs/3_create_agent.md)
+1. [LangChain Retriever and Agent](/docs/3_create_agent.md)
 1. [Cloud Run](/docs/3_cloud_run.md)

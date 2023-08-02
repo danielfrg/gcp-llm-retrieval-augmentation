@@ -1,7 +1,7 @@
 # 4. LangChain Agent
 
 With the embedding in our deployed index in Matching Engine and the documents
-indexed in our Firebase document DB we are able to build a simple RetreivalQA
+indexed in our Firebase document DB we are able to build a simple RetrievalQA
 LangChain agent.
 
 This Agent will that a sample question, create an embedding, look for similar
