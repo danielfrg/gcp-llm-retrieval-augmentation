@@ -14,7 +14,7 @@ resource "google_storage_bucket_object" "dummy_data" {
 
 resource "google_vertex_ai_index" "index" {
   region       = "us-central1"
-  display_name = "test-index"
+  display_name = "questions-index"
   description  = "index for test"
 
   metadata {
@@ -46,8 +46,8 @@ output "index_id" {
 # INDEX ENDPONT
 
 resource "google_vertex_ai_index_endpoint" "index_endpoint" {
-  display_name = "sample-endpoint"
-  description  = "A sample vertex endpoint"
+  display_name = "retrieval-aug-endpoint"
+  description  = "Endpoint for the Retrieval Augmentation demo"
   region       = "us-central1"
 }
 

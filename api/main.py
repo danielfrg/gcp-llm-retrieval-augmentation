@@ -36,7 +36,7 @@ async def root():
     return HTMLResponse(content=content, status_code=200)
 
 
-class Query(BaseModel):
+class Query_Neighbors(BaseModel):
     question: str
     n: int = 10
 
@@ -46,7 +46,7 @@ my_index_endpoint = aiplatform.MatchingEngineIndexEndpoint(
 )
 
 @app.post("/api/neirest_docs")
-async def api(query: Query):
+async def api(query: Query_Neighbors):
     vector = embeddings.embed_documents([query.question])
 
     neighbors = my_index_endpoint.find_neighbors(
@@ -64,8 +64,10 @@ retriever = FirestoreRetriever(
     deployed_index_id="retreivalaugindex",
     collection="questions",
     embeddings = embeddings,
-    top_k=1
+    top_k=5
 )
+
+llm = ChatVertexAI()
 
 qa = RetrievalQA.from_chain_type(
     llm=llm,
@@ -73,6 +75,10 @@ qa = RetrievalQA.from_chain_type(
     retriever=retriever
 )
 
+class Query_Full(BaseModel):
+    question: str
+
+
 @app.post("/api/full")
-async def api(query: Query):
-    return qa.run(query)
+async def api(query: Query_Full):
+    return qa.run(query.question)
