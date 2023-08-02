@@ -45,8 +45,8 @@ my_index_endpoint = aiplatform.MatchingEngineIndexEndpoint(
     index_endpoint_name='1221803709063757824'
 )
 
-@app.post("/api/neirest_docs")
-async def api(query: Query_Neighbors):
+@app.post("/api/nearest_docs")
+async def nearest_docs(query: Query_Neighbors):
     vector = embeddings.embed_documents([query.question])
 
     neighbors = my_index_endpoint.find_neighbors(
@@ -80,5 +80,5 @@ class Query_Full(BaseModel):
 
 
 @app.post("/api/full")
-async def api(query: Query_Full):
+async def full(query: Query_Full):
     return qa.run(query.question)

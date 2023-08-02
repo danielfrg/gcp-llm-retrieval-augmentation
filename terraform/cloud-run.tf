@@ -43,7 +43,9 @@ resource "google_cloudbuild_trigger" "github_repo" {
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
 }
 
-# Create the Cloud Run Service
+### Create the Cloud Run Service
+
+# Allow Cloud Run to access AI Platform and Firestore
 
 resource "google_service_account" "cloudrun_api" {
   account_id   = "retrieval-aug-cloudrun-api"
@@ -53,6 +55,12 @@ resource "google_service_account" "cloudrun_api" {
 resource "google_project_iam_member" "cloudrun_aiplatform_binding" {
   project = var.project_id
   role    = "roles/aiplatform.user"
+  member  = "serviceAccount:${google_service_account.cloudrun_api.email}"
+}
+
+resource "google_project_iam_member" "cloudrun_firebase_binding" {
+  project = var.project_id
+  role    = "roles/datastore.user"
   member  = "serviceAccount:${google_service_account.cloudrun_api.email}"
 }
 

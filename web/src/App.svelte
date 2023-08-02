@@ -20,12 +20,31 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  let loading: boolean | undefined;
   let question: string = "What is the capital of France?";
   let similarDocs: any[] = [];
 
   async function onSubmit() {
-    const data = await fetch(
-      "https://retrieval-augmentation-api-uowebtbapa-uc.a.run.app/api",
+    loading = true;
+
+    const answer = await fetch(
+      "https://retrieval-augmentation-api-uowebtbapa-uc.a.run.app/api/full",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          question: question,
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
+
+    console.log(await answer.text());
+
+    const nearestDocsP = await fetch(
+      "https://retrieval-augmentation-api-uowebtbapa-uc.a.run.app/api/neirest_docs",
+      // "https://retrieval-augmentation-api-uowebtbapa-uc.a.run.app/api/nearest_docs",
       {
         method: "POST",
         body: JSON.stringify({
@@ -38,18 +57,17 @@
       }
     );
 
-    const docs = await data.json();
+    // const nearestDocs = await nearestDocsP.json();
+    const nearestDocs = await nearestDocsP.json();
 
     const newDocs: any[] = [];
-    for (const similar of docs) {
+    for (const similar of nearestDocs) {
       const docID = similar[0];
-      console.log(docID);
       const docRef = doc(db, "questions", docID);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        console.log("Document data:", data);
         newDocs.push(data);
       } else {
         // docSnap.data() will be undefined in this case
@@ -57,6 +75,7 @@
       }
     }
 
+    loading = false;
     similarDocs = newDocs;
   }
 </script>
@@ -79,10 +98,16 @@
   </form>
 </main>
 
-<section>
-  {#each similarDocs as { question }}
-    <li>
-      {question}
-    </li>
-  {/each}
+<section class="container flex flex-col gap-4 mx-auto w-xl my-4">
+  {#if loading}
+    <p class="text-center">Loading...</p>
+  {:else if similarDocs.length >= 0}
+    {#each similarDocs as { question }}
+      <li>
+        {question}
+      </li>
+    {/each}
+  {:else}
+    <div />
+  {/if}
 </section>
