@@ -5,13 +5,18 @@
   },
   "hosting": {
     "source": "web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "frameworksBackend": {
       "region": "us-central1"
-    }
+    },
+    "rewrites": [
+      {
+        "source": "/api",
+        "run": {
+          "serviceId": "retreival-augmentation-api",
+          "region": "us-central1"
+        }
+      }
+    ]
   }
 }
