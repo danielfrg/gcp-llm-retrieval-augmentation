@@ -14,7 +14,7 @@ running this notebook will generate a `embeddings/data/embeddings.json` file.
 ## Upload embeddings to GCP bucket
 
 ```plain
-gsutil cp embeddings/data/embeddings.json gs://retreival-augmentation-example-4000/contents/embeddings.json
+gsutil cp embeddings/data/embeddings.json gs://<gcs-bucket>/contents/embeddings.json
 ```
 
 ## Trigger batch index update
@@ -41,5 +41,5 @@ Now that the index has been updated we can query for a similarity search.
 
 ## Next step
 
-In the next step we will deploy a Cloud Run service that will use the index to
-perform similarity searches and expose it as an API.
+In the next step we will index this same dataset into Firestore that will
+act as our Document store for the agent and Frontend UI.

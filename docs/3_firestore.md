@@ -1,4 +1,4 @@
-# 4. Firestore
+# 3. Firestore
 
 Firestore is the document database used to store all the questions with their respective IDs.
 

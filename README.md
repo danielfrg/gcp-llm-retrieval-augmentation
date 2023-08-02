@@ -3,8 +3,9 @@
 Services used:
 
 - VertexAI Matching Engine Index and Index Endpoint
+- VertexAI PaLM
 - Cloud Run
-- Cloud BUild
+- Cloud Build
 - Firestore
 - Firebase
 
@@ -21,6 +22,7 @@ Frameworks:
 ## Docs
 
 1. [Matching Engine Index Setup](/docs/1_matching_engine.md)
-2. [Create embeddings](/docs/2_create_embeddings.md)
-3. [Cloud Run](/docs/3_cloud_run.md)
-4. [Firestore](/docs/4_firestore.md)
+1. [Create embeddings](/docs/2_create_embeddings.md)
+1. [Firestore](/docs/3_firestore.md)
+1. [LangChain Retreiver and Agent](/docs/3_create_agent.md)
+1. [Cloud Run](/docs/3_cloud_run.md)
