@@ -16,6 +16,8 @@ The demo can be accessed [here](https://llmops-demos-frg.web.app).
 
 ## Services used
 
+![Architecture](/web/public/arch.jpg)
+
 - [VertexAI Matching Engine](https://cloud.google.com/vertex-ai/docs/matching-engine/overview): ANN Similarity Seach
 - [VertexAI PaLM](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/api-quickstart): Conversational Engine
 - [Cloud Run](https://cloud.google.com/run): Hosting of the API
