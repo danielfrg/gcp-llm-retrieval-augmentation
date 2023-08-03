@@ -38,9 +38,12 @@ Frameworks:
 
 ## Docs
 
-1. [Matching Engine Index Setup](/docs/1_matching_engine.md)
-1. [Create embeddings](/docs/2_create_embeddings.md)
-1. [Firestore](/docs/3_firestore.md)
-1. [LangChain Retriever and Agent](/docs/4_agent.md)
-1. [Cloud Run](/docs/5_cloud_run.md)
-1. [Firebase WebUI](/docs/6_firebase.md)
+1. [Infrastructure and Matching Engine Setup](/docs/1_matching_engine.md):
+   Setup the required infrastructure using Terraform and create
+   the Matching Engine index
+2. [Create embeddings](/docs/2_create_embeddings.md): Generate the embeddings for the documents and index them in
+   Matching Engine
+3. [Firestore](/docs/3_firestore.md): Index the documents in Firestore
+4. [LangChain Retriever and Agent](/docs/4_agent.md): Create a LangChain retriever and conversational agent
+5. [Cloud Run](/docs/5_cloud_run.md): Grab all the code, package it and deploy the API to Cloud Run
+6. [Firebase WebUI](/docs/6_firebase.md): Create the Web app

@@ -38,7 +38,7 @@
     <TabItem open title="Demo">
       <Demo />
     </TabItem>
-    <TabItem title="Details">
+    <TabItem title="Details" open>
       <p class="my-2">
         The demo uses the
         <a class="underline" href="https://huggingface.co/datasets/squad"
@@ -90,14 +90,55 @@
         >
         to generate the final.
       </p>
+      <h4 class="my-2 text-xl">How to build it</h4>
+      <ol>
+        <li>
+          1. <a
+            class="underline"
+            href="https://github.com/danielfrg/gcp-llm-retrieval-augmentation/blob/main/docs/1_matching_engine.md"
+            >Infrastructure Setup</a
+          >: Setup the required infrastructure using Terraform and create the
+          Matching Engine index
+        </li>
+        <li>
+          2. <a
+            class="underline"
+            href="https://github.com/danielfrg/gcp-llm-retrieval-augmentation/blob/main/docs/2_create_embeddings.md"
+            >Create embeddings</a
+          >: Generate the embeddings for the documents and index them in
+          Matching Engine
+        </li>
+        <li>
+          3. <a
+            class="underline"
+            href="https://github.com/danielfrg/gcp-llm-retrieval-augmentation/blob/main/docs/3_firestore.md"
+            >Firestore</a
+          >: Index the documents in Firestore
+        </li>
+        <li>
+          4. <a
+            class="underline"
+            href="https://github.com/danielfrg/gcp-llm-retrieval-augmentation/blob/main/docs/4_agent.md"
+            >LangChain Retriever and Agent</a
+          >: Create a LangChain retriever and conversational agent
+        </li>
+        <li>
+          5. <a
+            class="underline"
+            href="https://github.com/danielfrg/gcp-llm-retrieval-augmentation/blob/main/docs/5_cloud_run.md"
+            >Cloud Run</a
+          >: Grab all the code, package it and deploy the API to Cloud Run
+        </li>
+      </ol>
+
       <h4 class="my-2 text-xl">Source</h4>
       <p class="my-2">
         All the code for this demo including instructions on how to deploy your
         own version using Terraform and example notebooks can be <a
           class="underline"
           href="https://github.com/danielfrg/gcp-llm-retrieval-augmentation"
-          >found on Github.
-        </a>
+          >found on Github
+        </a>.
       </p></TabItem
     >
   </Tabs>
