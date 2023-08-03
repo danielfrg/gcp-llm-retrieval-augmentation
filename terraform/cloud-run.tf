@@ -69,8 +69,6 @@ resource "google_cloud_run_v2_service" "api" {
   location = var.region
 
   template {
-    service_account = google_service_account.cloudrun_api.email
-
     containers {
       image = "us-central1-docker.pkg.dev/llmops-demos-frg/retrieval-augmentation-api/api"
       resources {
@@ -79,6 +77,13 @@ resource "google_cloud_run_v2_service" "api" {
           cpu    = "2"
         }
       }
+    }
+
+    service_account = google_service_account.cloudrun_api.email
+
+    scaling {
+      min_instance_count = 2
+      max_instance_count = 100
     }
   }
 }
