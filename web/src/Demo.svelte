@@ -96,6 +96,7 @@
     question = sampleQs[index];
   }
   randomQuestion();
+  onSubmit();
 </script>
 
 <main class="flex flex-col gap-4 mx-auto text-center w-xl my-4">

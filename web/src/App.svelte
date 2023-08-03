@@ -5,8 +5,12 @@
 
 <div class="container mx-auto max-w-lg my-10">
   <h1 class="text-4xl font-extrabold text-center my-4">
-    Retrieval Augmentation Demo
+    Knowledge Aware LLM Question / Answer System
   </h1>
+  <h2 class="text-xl font-extrabold text-center my-4">
+    Using a Language Models and Vector Databases to create a question answering
+    system
+  </h2>
   <p class="text-center">
     This demo features multiple Google Cloud products including <a
       class="underline"
@@ -17,10 +21,16 @@
       class="underline"
       href="https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/api-quickstart"
       >VertexAI PaLM</a
-    > to combine the functionality of retrieval augmentation and conversational engines
-    to create a question answering system where the user can ask a question and the
-    LLM will use it's given context to answer the question.
+    >
+    to combine the functionality of
+    <a class="underline" href="https://www.promptingguide.ai/techniques/rag"
+      >retrieval augmentation</a
+    > and conversational engines to create a question answering system where the
+    user can ask a question and the LLM will use it's given context to answer the
+    question.
   </p>
+
+  <img src="/diagram.png" alt="Demo" class="mx-auto" />
 </div>
 
 <main class="container mx-auto max-w-4xl">
