@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.4",
-    "firebase": "^10.1.0"
+    "firebase": "^10.1.0",
+    "flowbite": "^1.8.1",
+    "flowbite-svelte": "^0.40.2"
   }
 }
