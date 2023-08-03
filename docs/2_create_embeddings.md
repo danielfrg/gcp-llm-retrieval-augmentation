@@ -1,7 +1,7 @@
 # 2. Create Embeddings
 
 In this step we will create the embeddings to be indexed by the Matching Engine,
-upload them to a GCP bucket and update the index.
+upload them to the GCP bucket and update the index.
 
 ## Generate embeddings
 

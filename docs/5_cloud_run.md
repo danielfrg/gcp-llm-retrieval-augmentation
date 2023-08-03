@@ -1,6 +1,7 @@
 # 5. Cloud Run
 
-We use Cloud Run to host our API.
+Now that we have all the code for our LangChain RetreivalQA agent we take this
+code and create a Cloud Run API to expose the functionality.
 
 - All the services are enabled in terraform. See the [`cloud-run.tf`](/terraform/cloud-run.tf) file
   - This section of the Terraform requires a
@@ -12,28 +13,24 @@ We use Cloud Run to host our API.
 - We use a custom Dockerfile to build the API image including it's depencencies
   and pre-trained models needed to generate the embeddings
 
-TODO: Example API call and respose. Point to Notebook.
+The source for the API can be found at [`api/main.py`](/api/main.py).
 
-```
-[
-  [
-    "573273bfe17f3d1400422993",
-    0.6401801109313965
-  ],
-  [
-    "56fae8528f12f3190063029f",
-    0.5958483815193176
-  ],
-  [
-    "572f39d804bcaa1900d7679d",
-    0.5644943118095398
-  ],
-  ...
-]
-```
+The API exposes two endpoints:
 
-We use Cloud Build to build the deploy the API to Cloud Run.
+1. For only retrieving the top k nearest neighbors
+2. A full QA system that takes a query and uses Vertex AL PaLM to generate an answer
+
+A version of this API and an OpenAPI endpoint is [available here](https://retrieval-augmentation-api-uowebtbapa-uc.a.run.app/docs).
+
+## Cloud BUild
+
+We use Cloud Build to take the source code, dependencies and Dockerfile to build
+a Docker contianer, upload it to Google Artifact Registry and deploy it to Cloud Run.
 Look at the [`cloudbuild.yml`](/cloudbuild.yml) file for more details.
+
+## Next steps
+
+We can create a simple web UI to interact with the API.
 
 ## Resources
 

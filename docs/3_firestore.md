@@ -1,9 +1,9 @@
 # 3. Firestore
 
-Firestore is the document database used to store all the questions with their respective IDs.
+Firestore is the document database used to store all the context of the questions
+of the dataset with their respective IDs.
 
-This DB is used by the web UI to retrieve the questions showed to the user.
-The API simply returns the IDs of the documents using Firestore we can retrieve the questions based on those IDs.
+This DB is used by the web UI and API to retrieve these documents and show them to the user.
 
 ## Setup
 
@@ -36,3 +36,7 @@ Example:
 
 We use a simple python script using the Python Firestore SDK.
 See the notebook [firestore/index_docs.ipynb](/firestore/index_docs.ipynb).
+
+## Next step
+
+With these services in place we can proceed to [create our conversational agent](/docs/4_agent.md).
