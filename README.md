@@ -1,7 +1,7 @@
 # LLM retrieval augmentation in Google Cloud
 
 This demo features
-[GCP Matching Engine](https://cloud.google.com/vertex-ai/docs/matching-engine/overview) and
+[GCP Vector Search](https://cloud.google.com/vertex-ai/docs/matching-engine/overview) and
 [VertexAI PaLM](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/api-quickstart)
 to combine the functionality of retrieval augmentation and conversational engines
 to create a question answering system where the user can ask a question and the
@@ -18,7 +18,7 @@ The demo can be accessed [here](https://llmops-demos-frg.web.app).
 
 ![Architecture](/web/public/arch.jpg)
 
-- [VertexAI Matching Engine](https://cloud.google.com/vertex-ai/docs/matching-engine/overview): ANN Similarity Seach
+- [VertexAI Vector Search](https://cloud.google.com/vertex-ai/docs/matching-engine/overview): ANN Similarity Seach
 - [VertexAI PaLM](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/api-quickstart): Conversational Engine
 - [Cloud Run](https://cloud.google.com/run): Hosting of the API
 - [Firestore](https://cloud.google.com/firestore): Document Database
@@ -38,11 +38,11 @@ Frameworks:
 
 ## Docs
 
-1. [Infrastructure and Matching Engine Setup](/docs/1_matching_engine.md):
+1. [Infrastructure and Vector Search Setup](/docs/1_matching_engine.md):
    Setup the required infrastructure using Terraform and create
-   the Matching Engine index
+   the Vector Search index
 2. [Create embeddings](/docs/2_create_embeddings.md): Generate the embeddings for the documents and index them in
-   Matching Engine
+   Vector Search
 3. [Firestore](/docs/3_firestore.md): Index the documents in Firestore
 4. [LangChain Retriever and Agent](/docs/4_agent.md): Create a LangChain retriever and conversational agent
 5. [Cloud Run](/docs/5_cloud_run.md): Grab all the code, package it and deploy the API to Cloud Run
